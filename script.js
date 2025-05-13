@@ -1,16 +1,14 @@
-function stringChop(str, size) {
-    if (!str) return [];
-    size = Number(size);
-    let chunks = [];
+function chunkString(str, chunkLength) {
+    if (!str) return []; // Return [] if str is null or undefined
 
+    chunkLength = Number(chunkLength);
+    if (isNaN(chunkLength) || chunkLength <= 0) return [];
 
-    for (let i = 0; i < str.length; i += size) {
-        chunks.push(str.substring(i, i + size));
+    const chunks = [];
+
+    for (let i = 0; i < str.length; i += chunkLength) {
+        chunks.push(str.substring(i, i + chunkLength));
     }
 
     return chunks;
 }
-
-const str = prompt("Enter String.");
-const size = prompt("Enter Chunk Size.");
-alert(JSON.stringify(stringChop(str, size)));
